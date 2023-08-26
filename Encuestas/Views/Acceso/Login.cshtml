@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/Content/Css/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="sidenav">
+        <div class="login-main-text">
+            <h2>SISTEMAS <br> DE ENCUESTAS</h2>
+            <p>Inicia sesión o regístrate desde aquí para acceder.</p>
+        </div>
+    </div>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+                <form action="@Url.Action("Login", "Acceso")" method="post">
+                    <div class="form-group">
+                        <label>NOMBRE USUARIO</label>
+                        <input type="text" name="NombreUsuario" class="form-control" placeholder="USUARIO">
+                    </div>
+                    <div class="form-group">
+                        <label>CONTRASEÑA</label>
+                        <input type="password" name="Clave" class="form-control" placeholder="CONTRASEÑA">
+                    </div>
+                    <button type="submit" class="btn btn-black">INGRESAR</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>

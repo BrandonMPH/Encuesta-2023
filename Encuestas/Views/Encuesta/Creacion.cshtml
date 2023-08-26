@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Creacion";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Creacion</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <br />
+                    <br />
+                    <h1>Crear nueva encuesta</h1>
+                    <div style="text-align: right;">
+                        <a style="text-align:right" class="btn btn-success" href="@Url.Action("Index","Encuesta", new { k = ""})">
+                            Finalizar creacion de encuesta
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <form class="well form-horizontal" action="@Url.Action("Creacion", "Encuesta")" method="post">
+                <div class="form-group">
+                    <label class="col-md-2">Nombre Campo</label>
+                    <div class="col-md-10">
+                        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="NombreCampo" name="NombreCampo" placeholder="Ingresar Nombre Campo" class="form-control" required value="" type="text" style="max-width:none; width:100%"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">Titulo Campo</label>
+                    <div class="col-md-10">
+                        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="Titulo" name="Titulo" placeholder="Ingresar titulo del campo" class="form-control" required value="" type="text" style="max-width:none; width:100%"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">Es Requerido</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select class="form-control" required style="max-width:none; width:100%" id="EsRequerido" name="EsRequerido">
+                                <option>Seleccione una opcion</option>
+                                <option value="S">Si</option>
+                                <option value="N">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">Tipo Campo</label>
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select class="form-control" id="TipoCampo" name="TipoCampo" required style="max-width:none; width:100%">
+                                <option value="0">Seleccione una tipo de dato</option>
+                                <option value="T">Texto</option>
+                                <option value="N">Numero</option>
+                                <option value="D">Fecha</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button style="text-align:right" type="submit" class="btn btn-success">Crear Pregunta</button>
+            </form>
+        </div>
+        <div class="container">
+            <div class="row">
+                <h3>Detalle encuesta</h3>
+            </div>
+            @if (Session["ListaDetalle"] != null)
+            {
+                foreach (var Line in (List<Encuestas.Models.Detalle>)Session["ListaDetalle"])
+                {
+                    <form class="well form-horizontal" action="@Url.Action("EditarDetalle", "Encuesta", new { k = Line.IdDetalle })" method="post">
+                        <div class="form-group">
+                            <label class="col-md-2">Nombre Campo</label>
+                            <div class="col-md-10">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="NombreCampo" name="NombreCampo" placeholder="Ingresar Nombre Campo" class="form-control" required value="@Line.NombreCampo" type="text" style="max-width:none; width:100%"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">Titulo Campo</label>
+                            <div class="col-md-10">
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="Titulo" name="Titulo" placeholder="Ingresar titulo del campo" class="form-control" required value="@Line.Titulo" type="text" style="max-width:none; width:100%"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">Es Requerido</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <select class="form-control" required style="max-width:none; width:100%" id="EsRequerido" name="EsRequerido">
+                                        @if (Line.EsRequerido == "S")
+                                        {
+                                            <option value="S" selected>Si</option>
+                                            <option value="N">No</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="S">Si</option>
+                                            <option value="N" selected>No</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">Tipo Campo</label>
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <select class="form-control" id="TipoCampo" name="TipoCampo" required style="max-width:none; width:100%">
+                                        @switch (Line.TipoCampo)
+                                        {
+                                            case "T":
+                                                <option value="T" selected>Texto</option>
+                                                <option value="N">Numero</option>
+                                                <option value="D">Fecha</option>
+                                                break;
+                                            case "N":
+                                                <option value="T">Texto</option>
+                                                <option value="N" selected>Numero</option>
+                                                <option value="D">Fecha</option>
+                                                break;
+                                            case "D":
+                                                <option value="T">Texto</option>
+                                                <option value="N">Numero</option>
+                                                <option value="D" selected>Fecha</option>
+                                                break;
+                                        }
+                                        <option value="0">Seleccione una tipo de dato</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div style="text-align: right;">
+                                <button style="float: right;" type="submit" class="btn btn-warning">Editar Pregunta</button>
+                                <a style="float: right;" class="btn btn-danger" href="@Url.Action("EliminarRegistro","Encuesta", new { k = Line.IdDetalle})">
+                                    Eliminar Pregunta
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                }
+            }
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

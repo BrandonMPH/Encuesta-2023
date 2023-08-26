@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Respuesta";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerRespuestas</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Pregunta</th>
+                            <th>Respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Session["ListaRespuesta"] != null)
+                        {
+                            foreach (var item in (List<Encuestas.Models.Respuesta>)Session["ListaRespuesta"])
+                            {
+                                <tr>
+                                    <td>@item.Pregunta</td>
+                                    <td>@item.Valor</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>

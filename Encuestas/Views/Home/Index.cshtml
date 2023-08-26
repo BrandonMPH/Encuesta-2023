@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <h1 class="page-header">Lista de Encuestas</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover">
+                            <thead class="thead-default">
+                                <tr class="add-category-row">
+                                    <th style="width: 30px;">
+                                        <a class="btn-view-fund btn btn-default btn-xs  pull-left" href="@Url.Action("CreacionEncabezado","Encuesta")">
+                                            <span class="glyphicon glyphicon-plus green" aria-hidden="true"></span>
+                                        </a>
+                                    </th>
+                                    <th colspan="2">Crear Nueva Encuesta</th>
+                                    <th style="width: 70px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td colspan="2">Encueta - Practicas estudiantes</td>
+                                    <td style="text-align: right;">
+                                        <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </button>
+                                        <button class="btn-view-fund btn btn-default btn-xs" type="button">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</body>
+</html>

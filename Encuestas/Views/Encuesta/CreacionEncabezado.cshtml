@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Creacion Encuesta";
+    var valorcampo = "text";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Creacion Encuesta</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <br />
+                    <br />
+                    <h1>Crear nueva encuesta</h1>
+                   
+                </div>
+            </div>
+            <form class="well form-horizontal" action="@Url.Action("CreacionEncabezado", "Encuesta")" method="post">
+                <div class="form-group">
+                    <label class="col-md-2">Nombre Encuesta</label>
+                    <div class="col-md-10">
+                        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span><input id="Nombre" name="Nombre" placeholder="Ingresar nombre de la encuesta" class="form-control" required value="" type="@valorcampo" style="max-width:none; width:100%"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2">Descripcion Encuesta</label>
+                    <div class="col-md-10">
+                        <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-align-left"></i></span><input id="Descripcion" name="Descripcion" placeholder="Ingresar descripcion de la encuesta" class="form-control" required value="" type="text" style="max-width:none; width:100%"></div>
+                    </div>
+                </div>
+                <button style="text-align:right" type="submit" class="btn btn-success">Crear Encuesta</button>
+            </form>
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

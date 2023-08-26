@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Creacion";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Creacion</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+    <div>
+        <div class="container">
+            <div class="row">
+                <br />
+                <br />
+                <h1>Responder Encuesta</h1>
+            </div>
+            @if ((List<Encuestas.Models.Detalle>)ViewBag.ListaDetalleEncuesta != null)
+            {
+                int count = 0;
+                
+                <form class="well form-horizontal" action="@Url.Action("RespuestaEncuesta", "Respuesta", new { k = ViewBag.IdEncuesta, j = ViewBag.CountDetalle })" method="post">
+                    @foreach (var Line in (List<Encuestas.Models.Detalle>)ViewBag.ListaDetalleEncuesta)
+                    {
+                        string Input = "Input" + count;
+                        string Detalle = "Detalle" + count;
+                        <div class="form-group">
+                            <label class="col-md-2">@Line.Titulo</label>
+                            <div class="col-md-10">
+                                <input type="hidden" id="@Detalle" name="@Detalle" value="@Line.IdDetalle" />
+                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="@Input" name="@Input" placeholder="Ingresar Nombre Campo" class="form-control" required value="" type="@Line.TipoCambioValor" style="max-width:none; width:100%"></div>
+                            </div>
+                        </div>
+                        count++;
+                    }
+                    <div class="form-group">
+                        <div style="text-align: right;">
+                            <button style="float: right;" type="submit" class="btn btn-success">Enviar Respuestas</button>
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
